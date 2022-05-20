@@ -1,0 +1,22 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "project to generate team profiles",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SD-github21/team-profile-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SD-github21/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/SD-github21/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
