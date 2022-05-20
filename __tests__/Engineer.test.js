@@ -14,4 +14,5 @@ test('creates an engineer child object', () => {
     expect(engineer.getRole()).toEqual('Engineer');
 
     expect(engineer.gitHub).toEqual(engineer.gitHub);
+    expect(engineer.getGitHub()).toEqual(engineer.gitHub);
 });
