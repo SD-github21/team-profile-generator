@@ -15,5 +15,3 @@ test('creates an engineer child object', () => {
 
     expect(engineer.gitHub).toEqual(engineer.gitHub);
 });
-
-module.exports = Engineer;
