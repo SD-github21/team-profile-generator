@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const generatePage = require("./src/page-template.js");
 const fs = require('fs');
 
-const profileQuestions = () => {
+const profileManagerQuestions = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -57,12 +57,25 @@ const profileQuestions = () => {
                 }
             }
         },
+    ]);
+    // Add code to go to profileMenuOptions + getRole(manager) + print out manager information to HTML
+};
+
+const profileMenuOptions = () => {
+    return inquirer.prompt([
         {
             type: "checkbox",
             name: "role",
             message: "What team member would you like to enter next?",
             choices: ["Engineer", "Intern", "Finish building team"]
         },
+    ])
+    // Add if else or when statement to direct to next series of questions
+    // .then
+};
+
+const profileEngineerQuestions = () => {
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -116,6 +129,12 @@ const profileQuestions = () => {
                 }
             }
         },
+    ])
+    // Add code to go to profileMenuOptions + getRole(engineer) + print out engineer information to HTML
+};
+
+const profileInternQuestions = () => {
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -141,8 +160,7 @@ const profileQuestions = () => {
                     return false;
                 }
             }
-        },
-        
+        },       
         {
             type: "input",
             name: "email",
@@ -169,5 +187,6 @@ const profileQuestions = () => {
                 }
             }
         },
-    ]);
+    ])
+    // Add code to go to profileMenuOptions + getRole(intern) + print out intern information to HTML
 };
