@@ -3,6 +3,8 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const fs = require('fs');
+const generateHTML = require("./src/page-template")
 
 // Create an array to hold all team data from inquirer prompts
 const teamData = [];
@@ -72,10 +74,9 @@ const addManager = () => {
         let managerObj = Object.fromEntries(keyValues);
         // Destructure the manager object to grab the values that can be fed into class instances
         const { name, id, email, role, officeNumber} = managerObj;
-        console.log(new Manager(name, id, email, role, officeNumber));
+        let manager = (new Manager(name, id, email, role, officeNumber));
         // Push the manager object up to global array of team data 
-        teamData.push(managerObj);
-        console.log(teamData);
+        teamData.push(manager);
         // Take user to the menu of options for continuing to build teams
         profileMenuOptions();
     })
@@ -101,6 +102,7 @@ const profileMenuOptions = () => {
             addIntern();
         } else {
             console.log("You have finished entering your team profiles. Goodbye!");
+            buildHTML();
             return;
         }
 
@@ -168,10 +170,9 @@ const addEngineer = () => {
         let keyValues = Object.entries(engineerData);
         keyValues.splice(3,0, ["role","Engineer"]);
         let engineerObj = Object.fromEntries(keyValues);
-        const { name, id, email, role, officeNumber} = engineerObj;
-        console.log(new Engineer(name, id, email, role, officeNumber));
-        teamData.push(engineerObj);
-        console.log(teamData);
+        const { name, id, email, role, github} = engineerObj;
+        let engineer = new Engineer(name, id, email, role, github);
+        teamData.push(engineer);
         profileMenuOptions();
     })
     .catch(err => {
@@ -235,14 +236,13 @@ const addIntern = () => {
         },
     ])
     .then(internData => {
-        // Follow same logic as managerData to create Intern object and push up to global team data array
+        // Follow same logic as managerData to create final Intern object and push up to global team data array
         let keyValues = Object.entries(internData);
         keyValues.splice(3,0, ["role","Intern"]);
         let internObj = Object.fromEntries(keyValues);
-        const { name, id, email, role, officeNumber} = internObj;
-        console.log(new Intern(name, id, email, role, officeNumber));
-        teamData.push(internObj);
-        console.log(teamData);
+        const { name, id, email, role, school} = internObj;
+        let intern = new Intern(name, id, email, role, school);
+        teamData.push(intern);
         profileMenuOptions();
     })
     .catch(err => {
@@ -250,14 +250,25 @@ const addIntern = () => {
     });
 };
 
+// Create a function to write HTML file
+function writeToFile(fileName, data) {
+    fs.writeFile('./dist/'+ fileName , generateHTML(data), err => {
+        if (err) throw err;
+        console.log('Team Profile generation complete! Check out index.html to see the output!');
+    });
+};
+
+function buildHTML() {
+    writeToFile(index.HTML, teamData);
+
+}
 
 function buildProfile() {
     // Create a welcome message
     console.log("Welcome to the Teeam Profile Generator! Let's begin with adding a manager to your team.");
     // Start program by adding manager
     addManager();
-    // Generate HTML file and read team data array into generatePage function 
-    writeFile(teamData);
+    // // // Generate HTML file and read team data array into generatePage function 
 };
 
 

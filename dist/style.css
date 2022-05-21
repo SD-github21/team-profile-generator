@@ -1,0 +1,19 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+}
+
+header, #team-title {
+    justify-content:center;
+    text-align: center;
+    color: white;
+    background-color: aqua;
+
+}
+
+.team-title {
+    justify-content:left;
+    margin-left: 15px;
+    font-weight: bold;
+    
+}
