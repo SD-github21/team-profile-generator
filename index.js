@@ -1,8 +1,6 @@
 const inquirer = require("inquirer");
-const generatePage = require("./src/page-template.js");
-const fs = require('fs');
 
-const profileManagerQuestions = () => {
+const addManager = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -17,7 +15,7 @@ const profileManagerQuestions = () => {
                 }
             }
         },
-                {
+        {
             type: "input",
             name: "id",
             message: "Enter your team manager's employee ID (Required)",
@@ -57,24 +55,38 @@ const profileManagerQuestions = () => {
                 }
             }
         },
-    ]);
-    // Add code to go to profileMenuOptions + getRole(manager) + print out manager information to HTML
+    ])
+    .then(managerData => {
+        console.log(managerData);
+        profileMenuOptions();
+    })
+    .catch(err => {
+    console.log(err);
+    });
 };
 
 const profileMenuOptions = () => {
-    return inquirer.prompt([
+    inquirer.prompt(
         {
-            type: "checkbox",
+            type: "list",
             name: "role",
             message: "What team member would you like to enter next?",
-            choices: ["Engineer", "Intern", "Finish building team"]
-        },
-    ])
-    // Add if else or when statement to direct to next series of questions
-    // .then
+            choices: ['Engineer', 'Intern', 'Finish building team'],
+        })
+    .then (({ role }) => {
+        if (role === "Engineer"){
+            addEngineer();
+        } else if (role === "Intern") {
+            addIntern();
+        } else {
+            console.log("You have finished entering your team profiles. Goodbye!");
+            return;
+        }
+
+    })
 };
 
-const profileEngineerQuestions = () => {
+const addEngineer = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -130,10 +142,16 @@ const profileEngineerQuestions = () => {
             }
         },
     ])
-    // Add code to go to profileMenuOptions + getRole(engineer) + print out engineer information to HTML
+    .then(engineerData => {
+        console.log(engineerData);
+        profileMenuOptions();
+    })
+    .catch(err => {
+    console.log(err);
+    });
 };
 
-const profileInternQuestions = () => {
+const addIntern = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -188,5 +206,19 @@ const profileInternQuestions = () => {
             }
         },
     ])
-    // Add code to go to profileMenuOptions + getRole(intern) + print out intern information to HTML
+    .then(internData => {
+        console.log(internData);
+        profileMenuOptions();
+    })
+    .catch(err => {
+    console.log(err);
+    });
 };
+
+
+function buildProfile() {
+    addManager()
+};
+
+
+buildProfile();
