@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const addManager = () => {
     return inquirer.prompt([
@@ -60,7 +63,7 @@ const addManager = () => {
         let keyValues = Object.entries(managerData);
         keyValues.splice(3,0, ["role","Manager"]);
         let managerObj = Object.fromEntries(keyValues);
-        console.log(managerObj);  
+        console.log(new Manager(managerObj)); 
         profileMenuOptions();
     })
     .catch(err => {
@@ -149,7 +152,7 @@ const addEngineer = () => {
         let keyValues = Object.entries(engineerData);
         keyValues.splice(3,0, ["role","Engineer"]);
         let engineerObj = Object.fromEntries(keyValues);
-        console.log(engineerObj);  
+        console.log(new Engineer(engineerObj));  
         profileMenuOptions();
     })
     .catch(err => {
@@ -200,10 +203,10 @@ const addIntern = () => {
         },       
         {
             type: "input",
-            name: "github",
+            name: "school",
             message: "Enter your team intern's school (Required)",
-            validate: githubInput => {
-                if (githubInput) {
+            validate: schoolInput => {
+                if (schoolInput) {
                     return true;
                 } else {
                     console.log("Please enter your team intern's school!");
@@ -216,7 +219,7 @@ const addIntern = () => {
         let keyValues = Object.entries(internData);
         keyValues.splice(3,0, ["role","Intern"]);
         let internObj = Object.fromEntries(keyValues);
-        console.log(internObj);  
+        console.log(new Intern(internObj));  
         profileMenuOptions();
     })
     .catch(err => {
