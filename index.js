@@ -58,6 +58,10 @@ const addManager = () => {
     ])
     .then(managerData => {
         console.log(managerData);
+        let keyValues = Object.entries(managerData);
+        keyValues.splice(3,0, ["role","Manager"]);
+        let managerObj = Object.fromEntries(keyValues);
+        console.log(managerObj);  
         profileMenuOptions();
     })
     .catch(err => {
@@ -143,6 +147,7 @@ const addEngineer = () => {
         },
     ])
     .then(engineerData => {
+        engineerData.role = "engineer";
         console.log(engineerData);
         profileMenuOptions();
     })
