@@ -57,7 +57,6 @@ const addManager = () => {
         },
     ])
     .then(managerData => {
-        console.log(managerData);
         let keyValues = Object.entries(managerData);
         keyValues.splice(3,0, ["role","Manager"]);
         let managerObj = Object.fromEntries(keyValues);
@@ -147,8 +146,10 @@ const addEngineer = () => {
         },
     ])
     .then(engineerData => {
-        engineerData.role = "engineer";
-        console.log(engineerData);
+        let keyValues = Object.entries(engineerData);
+        keyValues.splice(3,0, ["role","Engineer"]);
+        let engineerObj = Object.fromEntries(keyValues);
+        console.log(engineerObj);  
         profileMenuOptions();
     })
     .catch(err => {
@@ -212,7 +213,10 @@ const addIntern = () => {
         },
     ])
     .then(internData => {
-        console.log(internData);
+        let keyValues = Object.entries(internData);
+        keyValues.splice(3,0, ["role","Intern"]);
+        let internObj = Object.fromEntries(keyValues);
+        console.log(internObj);  
         profileMenuOptions();
     })
     .catch(err => {
