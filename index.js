@@ -1,10 +1,13 @@
+// Feed in inquirer package as well as class constructors from other files
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+// Create an array to hold all team data from inquirer prompts
 const teamData = [];
 
+// Create function to add manager to team profile
 const addManager = () => {
     return inquirer.prompt([
         {
@@ -33,7 +36,6 @@ const addManager = () => {
                 }
             }
         },
-        
         {
             type: "input",
             name: "email",
@@ -62,15 +64,19 @@ const addManager = () => {
         },
     ])
     .then(managerData => {
+        // Convert the managerData object into an array of key value pairs
         let keyValues = Object.entries(managerData);
+        // Splice into the array a role key value pair that is needed to generate the class instances
         keyValues.splice(3,0, ["role","Manager"]);
+        // Conver the array back to an object
         let managerObj = Object.fromEntries(keyValues);
-        // destructure object into the values
+        // Destructure the manager object to grab the values that can be fed into class instances
         const { name, id, email, role, officeNumber} = managerObj;
         console.log(new Manager(name, id, email, role, officeNumber));
-        //push up to array 
+        // Push the manager object up to global array of team data 
         teamData.push(managerObj);
         console.log(teamData);
+        // Take user to the menu of options for continuing to build teams
         profileMenuOptions();
     })
     .catch(err => {
@@ -78,6 +84,7 @@ const addManager = () => {
     });
 };
 
+// Create function to add menu of options 
 const profileMenuOptions = () => {
     inquirer.prompt(
         {
@@ -87,6 +94,7 @@ const profileMenuOptions = () => {
             choices: ['Engineer', 'Intern', 'Finish building team'],
         })
     .then (({ role }) => {
+        // Create if statement to direct user to the functions associated with the user's choice of role
         if (role === "Engineer"){
             addEngineer();
         } else if (role === "Intern") {
@@ -156,13 +164,12 @@ const addEngineer = () => {
         },
     ])
     .then(engineerData => {
+        // Follow same logic as managerData to create Engineer object and push up to global team data array
         let keyValues = Object.entries(engineerData);
         keyValues.splice(3,0, ["role","Engineer"]);
         let engineerObj = Object.fromEntries(keyValues);
-        // destructure object into the values
         const { name, id, email, role, officeNumber} = engineerObj;
         console.log(new Engineer(name, id, email, role, officeNumber));
-        //push up to array 
         teamData.push(engineerObj);
         console.log(teamData);
         profileMenuOptions();
@@ -187,7 +194,7 @@ const addIntern = () => {
                 }
             }
         },
-                {
+        {
             type: "input",
             name: "id",
             message: "Enter your team intern's employee ID (Required)",
@@ -228,13 +235,12 @@ const addIntern = () => {
         },
     ])
     .then(internData => {
+        // Follow same logic as managerData to create Intern object and push up to global team data array
         let keyValues = Object.entries(internData);
         keyValues.splice(3,0, ["role","Intern"]);
         let internObj = Object.fromEntries(keyValues);
-        // destructure object into the values
         const { name, id, email, role, officeNumber} = internObj;
         console.log(new Intern(name, id, email, role, officeNumber));
-        //push up to array 
         teamData.push(internObj);
         console.log(teamData);
         profileMenuOptions();
@@ -246,8 +252,12 @@ const addIntern = () => {
 
 
 function buildProfile() {
-    addManager()
-    // writeFile(teamData)
+    // Create a welcome message
+    console.log("Welcome to the Teeam Profile Generator! Let's begin with adding a manager to your team.");
+    // Start program by adding manager
+    addManager();
+    // Generate HTML file and read team data array into generatePage function 
+    writeFile(teamData);
 };
 
 
