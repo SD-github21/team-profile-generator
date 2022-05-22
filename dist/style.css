@@ -3,21 +3,20 @@ body {
 
 }
 
-header, #team-title {
+header {
     justify-content:center;
     text-align: center;
     color: black;
     background-color: aqua;
+
 }
 
 .team-title {
-    justify-content:left;
-    margin-left: 15px;
     font-weight: bold;
-    
 }
 
 .team-name {
+    font-weight: bold;
     background-color: aqua;
 }
 

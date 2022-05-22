@@ -2,61 +2,47 @@ const createProfiles = teamDataArr => {
     const managers = teamDataArr.filter(member => member.role === 'Manager');
     const engineers = teamDataArr.filter(member => member.role === 'Engineer');
     const interns = teamDataArr.filter(member => member.role === 'Intern');
-    console.log(managers);
-    console.log(engineers);
-    console.log(interns);
     return `       
 
         ${managers
         .map(manager => {
-            return `
-            <div class="col-12 col-md-3 mx-3 my-3 card">
+            return `    
+            <div class="col-12 col-md-3 mx-3 my-3 shadow rounded">
                 <h3 class="team-name">${manager.getName()}</h3>
                 <h4 class="team-role"><i class="fa-solid fa-mug-hot"></i>       ${manager.getRole()}</h4>
                 <p>ID: ${manager.getId()}</p>
                 <p>Email: <a href = "mailto: ${manager.getEmail()}">${manager.getEmail()}</a><p>
                 <p>Office number: ${manager.getOfficeNumber()}
-            </div>
-        `;
-       
+            </div>`;
         })
         .join("")}
 
         ${engineers
             .map(engineer => {
-                return `
-            <div class="col-12 col-md-3 mx-3 my-3 card">
+                return `    
+            <div class="col-12 col-md-3 mx-3 my-3 shadow rounded">
                 <h3 class="team-name">${engineer.getName()}</h3>
                 <h4 class="team-role"><i class="fa-solid fa-glasses"></i>        ${engineer.getRole()}</h4>
                 <p>ID: ${engineer.getId()}</p>
                 <p>Email: <a href = "mailto: ${engineer.getEmail()}">${engineer.getEmail()}</a><p>
-                <p>GitHub: <a href = "https://github.com/${engineer.getGitHub()}" class="github">https://github.com/${engineer.getGitHub()}</a></p>
-            </div>
-            `;
-           
+                <p>GitHub: <a href = "https://github.com/${engineer.getGitHub()}" target="_blank" class="github">https://github.com/${engineer.getGitHub()}</a></p>
+            </div>`;          
             })
             .join("")}
     
-            ${interns
-                .map(intern => {
-                    return `
-                <div class="col-12 col-md-3 mx-3 my-3 card">
-                    <h3 class="team-name">${intern.getName()}</h3>
-                    <h4 class="team-role"><i class="fa-solid fa-user-graduate"></i>        ${intern.getRole()}</h4>
-                    <p>ID: ${intern.getId()}</p>
-                    <p>Email: <a href = "mailto: ${intern.getEmail()}">${intern.getEmail()}</a><p>
-                    <p>School: ${intern.getSchool()}
-                </div>
-                `;
-               
-                })
-                .join("")}
-    
-
-        </div> 
-        `;
- 
-};
+        ${interns
+            .map(intern => {
+                return `    
+            <div class="col-12 col-md-3 mx-3 my-3 shadow rounded">    
+                <h3 class="team-name">${intern.getName()}</h3>
+                <h4 class="team-role"><i class="fa-solid fa-user-graduate"></i>        ${intern.getRole()}</h4>
+                <p>ID: ${intern.getId()}</p>
+                <p>Email: <a href = "mailto: ${intern.getEmail()}">${intern.getEmail()}</a><p>
+                <p>School: ${intern.getSchool()}
+            </div>`;              
+            })
+            .join("")}`;
+ };
 
 
 // Export function to generate entire page
@@ -89,8 +75,11 @@ module.exports = templateData => {
 
 
         <main class="container">
-            <section class="row d-flex flex-wrap justify-content-center" id="team-members">
+
+           <section class="row d-flex flex-wrap justify-content-center" id="team-members">
                 ${createProfiles(templateData)} 
+
+           </section>
 
         </main>
 

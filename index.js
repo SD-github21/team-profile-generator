@@ -1,4 +1,4 @@
-// Feed in inquirer package as well as class constructors from other files
+// Feed in inquirer package; fs module; and class constructors and functions from other files
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -6,10 +6,10 @@ const Intern = require("./lib/Intern");
 const fs = require('fs');
 const generateHTML = require("./src/page-template")
 
-// Create an array to hold all team data from inquirer prompts
+// Create an array to hold all team data objects from inquirer prompts
 const teamData = [];
 
-// Create function to add manager to team profile
+// Create function to add manager to team profile through inquirer
 const addManager = () => {
     return inquirer.prompt([
         {
@@ -95,13 +95,15 @@ const profileMenuOptions = () => {
             choices: ['Engineer', 'Intern', 'Finish building team'],
         })
     .then (({ role }) => {
-        // Create if statement to direct user to the functions associated with the user's choice of role
+        // Create if statement to direct user to the functions associated with the team member's role
         if (role === "Engineer"){
             addEngineer();
         } else if (role === "Intern") {
             addIntern();
         } else {
+            // Create a statement to notify user that application has finished
             console.log("You have finished entering your team profiles. Goodbye!");
+            // Call the buildHTML() function to generate team member profile webpage
             buildHTML();
             return;
         }
@@ -109,6 +111,7 @@ const profileMenuOptions = () => {
     })
 };
 
+// Create function to add engineers to team profile through inquirer
 const addEngineer = () => {
     return inquirer.prompt([
         {
@@ -180,6 +183,7 @@ const addEngineer = () => {
     });
 };
 
+// Create function to add interns to team profile through inquirer
 const addIntern = () => {
     return inquirer.prompt([
         {
@@ -250,7 +254,7 @@ const addIntern = () => {
     });
 };
 
-// Create a function to write HTML file
+// Create a function to write HTML file and generate the HTML page template with the team data array
 function writeToFile(fileName, data) {
     fs.writeFile('./dist/'+ fileName , generateHTML(data), err => {
         if (err) throw err;
@@ -258,18 +262,20 @@ function writeToFile(fileName, data) {
     });
 };
 
+// Create a function that calls the writeToFile function
 function buildHTML() {
     writeToFile("index.html", teamData);
 
 }
 
+// Create a function to begin building the team profile
 function buildProfile() {
     // Create a welcome message
     console.log("Welcome to the Teeam Profile Generator! Let's begin with adding a manager to your team.");
     // Start program by adding manager
     addManager();
-    // // // Generate HTML file and read team data array into generatePage function 
 };
 
 
+// Initialize the Team Profile Generator application
 buildProfile();
