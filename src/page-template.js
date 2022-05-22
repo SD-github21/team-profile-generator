@@ -10,7 +10,7 @@ const createProfiles = teamDataArr => {
         ${managers
         .map(manager => {
             return `
-            <div class="col-12 card">
+            <div class="col-12 col-md-3 mx-3 card">
                 <h3 class="team-name">${manager.getName()}</h3>
                 <h4 class="team-role">${manager.getRole()}</h4>
                 <p>ID: ${manager.getId()}</p>
@@ -25,7 +25,7 @@ const createProfiles = teamDataArr => {
         ${engineers
             .map(engineer => {
                 return `
-            <div class="col-12 card">
+            <div class="col-12 col-md-3 mx-3 card">
                 <h3 class="team-name">${engineer.getName()}</h3>
                 <h4 class="team-role">${engineer.getRole()}</h4>
                 <p>ID: ${engineer.getId()}</p>
@@ -40,7 +40,7 @@ const createProfiles = teamDataArr => {
             ${interns
                 .map(intern => {
                     return `
-                <div class="col-12 card">
+                <div class="col-12 col-md-3 mx-3 card">
                     <h3 class="team-name">${intern.getName()}</h3>
                     <h4 class="team-role">${intern.getRole()}</h4>
                     <p>ID: ${intern.getId()}</p>
@@ -91,7 +91,7 @@ module.exports = templateData => {
 
 
         <main class="container">
-            <section class="my-3" id="team-members">
+            <section class="row" id="team-members">
                 ${createProfiles(templateData)} 
 
         </main>

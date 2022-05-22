@@ -6,9 +6,8 @@ body {
 header, #team-title {
     justify-content:center;
     text-align: center;
-    color: white;
+    color: black;
     background-color: aqua;
-
 }
 
 .team-title {
@@ -17,3 +16,9 @@ header, #team-title {
     font-weight: bold;
     
 }
+
+.card-header {
+    
+    background-color: aqua;
+}
+
