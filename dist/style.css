@@ -17,8 +17,14 @@ header, #team-title {
     
 }
 
-.card-header {
-    
+.team-name {
     background-color: aqua;
 }
 
+.team-role {
+    background-color: rgb(245, 242, 237);
+}
+
+.github {
+    font-size: smaller;
+} 
