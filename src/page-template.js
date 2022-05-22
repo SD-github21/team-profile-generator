@@ -1,36 +1,62 @@
 const generateHTML = teamDataArr => {
-    console.log(teamDataArr)
+    const manager = teamDataArr.filter(member => member.role === 'Manager');
+    const engineer = teamDataArr.filter(member => member.role === 'Engineer');
+    const intern = teamDataArr.filter(member => member.role === 'Intern');
+    console.log(manager);
+    console.log(engineer);
+    console.log(intern);
+    return `       
+        <div class="col-12 col-md-4 card">
+        ${manager
+        .map(({ name, id, role, email, officeNumber }) => {
+            return `
+            <h3 class="team-name">${name}</h3>
+            <h4 class="team-role">${role}</h4>
+            <p>ID: ${id}</p>
+            <p>Email: <a href = "mailto: ${email}"></a><p>
+            <p>Office number: ${officeNumber}
+        `;
+       
+        })
+        .join("")}
+
+        ${engineer
+            .map(({ name, id, email, role, gitHub }) => {
+                return `
+                <h3 class="team-name">${name}</h3>
+                <h4 class="team-role">${role}</h4>
+                <p>ID: ${id}</p>
+                <p>Email: <a href = "mailto: ${email}"></a><p>
+                <p>GitHub: ${gitHub}
+            `;
+           
+            })
+            .join("")}
+    
+            ${intern
+                .map(({ name, id, email, role, school }) => {
+                    return `
+                    <h3 class="team-name">${name}</h3>
+                    <h4 class="team-role">${role}</h4>
+                    <p>ID: ${id}</p>
+                    <p>Email: <a href = "mailto: ${email}"></a><p>
+                    <p>School: ${school}
+                `;
+               
+                })
+                .join("")}
+    
+
+        </div> 
+        `;
+ 
 };
 
-module.exports = generateHTML
+module.exports = generateHTML;
 
-/// Create the team member profiles section
-// const generateManagers = teamDataArr => {
-//     if (role === "Manager") {
-//     return `
- 
-//         ${teamDataArr
-//            .map(({ name, id, email, role }) => {
-//             return `
-//             <div class="col-12 col-md-4 card">
-//               <h3 class="team-name">${manager.getName()}</h3>
-//               <h4 class="team-role">${getRole()}</h4>
-//               <p>ID: ${getId()}</p>
-//               <p>Email: <a href = "mailto: ${getEmail()}"></a><p>
-//               <p>Office numner: ${getOfficeNumber()}
-//             </div>
-//           `;
-//           })
-//           .join('')}
-//         </div>
-//       </section>
-//     `;
-//   };
-// }
+
 // // Export function to generate entire page
 // module.exports = templateData => {
-//     // destructure page data by section
-//     const { projects, about, ...header } = templateData;
 
 //     return `
 //     <!DOCTYPE html>
@@ -60,7 +86,7 @@ module.exports = generateHTML
 
 //         <main class="container">
 //             <section class="my-3" id="team-members">
-//                 ${generateManagers(teamData)} 
+//                 ${createProfiles(teamData)} 
 
 //         </main>
 
@@ -68,4 +94,3 @@ module.exports = generateHTML
 //     </html>
 //       `;
 // };
-

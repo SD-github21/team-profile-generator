@@ -259,7 +259,7 @@ function writeToFile(fileName, data) {
 };
 
 function buildHTML() {
-    writeToFile(index.HTML, teamData);
+    writeToFile("index.html", teamData);
 
 }
 
