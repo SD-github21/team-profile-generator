@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/License-ISC-ff69b4)
+
 # **Team Profile Generator**
 
 ## **Description**
@@ -74,7 +76,9 @@ THEN I exit the application, and the HTML is generated<br>
 <br>
 
 ### **License**
-ISC
+  This project is covered under the following license: ISC<br>
+  https://opensource.org/licenses/ISC
+
 
 <br>
 
