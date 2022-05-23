@@ -88,7 +88,7 @@ This project does not include any contributors
 <br>
 
 ### **Tests**
-This application has been tested via Jest. All classes (Employee, Manager, Engineer, and Intern) have been tested and appear in the __tests__ folder. A screen shot of the Jest tests output appears below:
+This application has been tested via Jest. All classes (Employee, Manager, Engineer, and Intern) have been tested and all test files appear in the __tests__ folder. A screen shot of the Jest tests output appears below:
 
 ![alt text](images/screen_shot_jest_tests.png)
 
