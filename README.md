@@ -71,7 +71,7 @@ THEN I exit the application, and the HTML is generated<br>
 
 (4) A sample index.html file has been stored within this repository and can be found [here](dist/index.html). Below is a screen shot of a sample index.html file:
 
-![alt text](images/screen_shot.png)
+![alt text](images/screen_shot_html_webpage.png)
 
 <br>
 
@@ -88,7 +88,9 @@ This project does not include any contributors
 <br>
 
 ### **Tests**
-This application has been tested via Jest. All classes (Employee, Manager, Engineer, and Intern) have been tested and appear in the __tests__ folder.
+This application has been tested via Jest. All classes (Employee, Manager, Engineer, and Intern) have been tested and appear in the __tests__ folder. A screen shot of the Jest tests output appears below:
+
+![alt text](images/screen_shot_jest_tests.png)
 
 <br>
 
