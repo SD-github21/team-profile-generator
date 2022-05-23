@@ -70,7 +70,7 @@ const addManager = () => {
         let keyValues = Object.entries(managerData);
         // Splice into the array a role key value pair that is needed to generate the class instances
         keyValues.splice(3,0, ["role","Manager"]);
-        // Conver the array back to an object
+        // Convert the array back to an object
         let managerObj = Object.fromEntries(keyValues);
         // Destructure the manager object to grab the values that can be fed into class instances
         const { name, id, email, role, officeNumber} = managerObj;
