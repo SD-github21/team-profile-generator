@@ -63,13 +63,13 @@ THEN I exit the application, and the HTML is generated<br>
     node index.js
 
 
-(2) Users will then be welcomed to the application and then asked to complete a series of questions about themselves (team managers). A sample screen shot of the application appears below: <br>
+(2) Users will then be welcomed to the application and then asked to complete a series of questions about themselves (team managers). A sample screen shot of the command-line application appears below: <br>
 
 ![alt text](images/screen_shot_application.png)
 
 (3) Once all questions about the team members are answered and the user chooses "Finished building team", a message indicating that the application program has finished appears in the command line. An index.html file will be automatically generated and stored in the "dist" folder of the project repository. All of the data will be formatted and readily available for the manager's reference.<br>
 
-(4) A sample index.html file has been stored within this repository and can be found [here](dist/index.html). Below is a screen shot of a sample index.html file:
+(4) A sample index.html file has been stored within this repository and can be found [here](dist/index.html). Below is a screen shot of the webpage built from the sample index.html file:
 
 ![alt text](images/screen_shot_html_webpage.png)
 
