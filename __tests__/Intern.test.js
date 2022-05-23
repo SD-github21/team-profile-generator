@@ -1,7 +1,7 @@
 const Intern = require('../lib/Intern.js');
 
 test('creates an intern child object', () => {
-    const intern = new Intern('Sally', 2, 'sally@gmail.com', 'Intern', 25);
+    const intern = new Intern('Sally', 2, 'sally@gmail.com', 'Intern', '2University');
 
     expect(intern.name).toBe('Sally');
     expect(intern.id).toEqual(expect.any(Number));
@@ -13,6 +13,6 @@ test('creates an intern child object', () => {
 
     expect(intern.getRole()).toEqual('Intern');
 
-    expect(intern.school).toEqual(intern.school);
+    expect(intern.school).toEqual(expect.any(String));
     expect(intern.getSchool()).toEqual(intern.school);
 });

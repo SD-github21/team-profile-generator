@@ -1,7 +1,7 @@
 const Engineer = require('../lib/Engineer.js');
 
 test('creates an engineer child object', () => {
-    const engineer = new Engineer('Sally', 2, 'sally@gmail.com', 'Engineer', 25);
+    const engineer = new Engineer('Sally', 2, 'sally@gmail.com', 'Engineer', 'sallygithub');
 
     expect(engineer.name).toBe('Sally');
     expect(engineer.id).toEqual(expect.any(Number));
@@ -13,6 +13,6 @@ test('creates an engineer child object', () => {
 
     expect(engineer.getRole()).toEqual('Engineer');
 
-    expect(engineer.gitHub).toEqual(engineer.gitHub);
+    expect(engineer.gitHub).toEqual(expect.any(String));
     expect(engineer.getGitHub()).toEqual(engineer.gitHub);
 });
