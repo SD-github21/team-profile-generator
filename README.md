@@ -63,7 +63,7 @@ THEN I exit the application, and the HTML is generated<br>
     node index.js
 
 
-(2) Users will then be welcomed to the application and then asked to complete a series of questions about themselves (team managers). A sample screen shot of the command-line application appears below: <br>
+(2) Users will then be welcomed to the application and then asked to complete a series of questions about their team members. A sample screen shot of the command-line application appears below: <br>
 
 ![alt text](images/screen_shot_application.png)
 
