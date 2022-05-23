@@ -17,7 +17,7 @@ The purpose of this project was to build a Node.js command-line application obta
 [Tests](#tests)<br>
 [Assets Utilized](#assets-utilized)<br>
 [Built With](#built-with)<br>
-[Deliverable](#deliverable)<br>
+[Walkthrough Video](#video-of-team-profile-generator)<br>
 
 <br>
 
@@ -115,6 +115,6 @@ This application has been tested via Jest. All classes (Employee, Manager, Engin
 
 <br>
 
-### **Video of README Generator**
+### **Video of Team Profile Generator**
 https://drive.google.com/file/d/1H6pDqyKK7AA346FSRiCmI7-5DXPCLbf1/view
 
