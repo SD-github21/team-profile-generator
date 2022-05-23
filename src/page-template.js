@@ -1,3 +1,4 @@
+// Create createProfiles function to generate HTML sections for each type of role
 const createProfiles = teamDataArr => {
     const managers = teamDataArr.filter(member => member.role === 'Manager');
     const engineers = teamDataArr.filter(member => member.role === 'Engineer');
